@@ -73,7 +73,7 @@ npm start
 npm run build
 
 // build bundle.js on development mode and watching
-npm react-dev
+npm run react-dev
 
 // create database and seed
 npm run seed

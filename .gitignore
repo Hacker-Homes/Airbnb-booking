@@ -1,5 +1,6 @@
 node_modules
 public/dist/bundle.js
+public/dist/bundle.js.gz
 db/dbconfig.js
 coverage/clover.xml
 coverage/lcov-report/index.html

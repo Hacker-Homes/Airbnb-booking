@@ -1,17 +1,16 @@
-# Use postgres/example user/password credentials
 version: '3'
 
 services:
   database:
-    image: postgres
+    image: cassandra
     restart: always
     environment:
-      POSTGRES_PASSWORD: docker
+      # POSTGRES_PASSWORD: docker
 
   booking:
     build: 
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.prod
     restart: always
     ports:
       - 5555:5555

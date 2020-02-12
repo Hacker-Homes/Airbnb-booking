@@ -7,7 +7,7 @@ services:
     image: cassandra
     restart: always
     environment:
-      # POSTGRES_PASSWORD: docker
+
     volumes:
       - ./volumes/cassandra_data_volume:/var/lib/postgresql/data
 

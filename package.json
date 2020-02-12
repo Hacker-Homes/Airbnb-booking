@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --coverage",
-    "start": "nodemon server/index.js",
+    "start": "node server/index.js",
+    "start-dev": "nodemon server/index.js",
     "build": "webpack --config webpack.config.prod.js",
-    "react-dev": "webpack -d --watch",
-    "seed": "mysql -u root <db/schema.sql && node db/room_generater.js && node db/booking_generater.js"
+    "react-dev": "webpack -d --watch"
   },
   "lint-staged": {
     "*.js": [

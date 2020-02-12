@@ -1,6 +1,11 @@
 FROM node:7
-WORKDIR /app
-COPY . /app
+
+WORKDIR /src/app
+
+COPY . /src/app
+
 RUN npm install
-CMD node db/room_generater.js && node db/booking_generater.js && node server/index.js && webpack --config webpack.config.prod.js
-EXPOSE 3333
+RUN npm run build
+RUN npm run 
+
+EXPOSE 5555

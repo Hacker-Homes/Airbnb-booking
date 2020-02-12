@@ -1,3 +1,5 @@
+# CASSANDRA production
+
 version: '3'
 
 services:
@@ -7,7 +9,7 @@ services:
     environment:
       # POSTGRES_PASSWORD: docker
     volumes:
-      - ./volumes/postgres_data_volume:/var/lib/postgresql/data
+      - ./volumes/cassandra_data_volume:/var/lib/postgresql/data
 
   booking:
     build: 

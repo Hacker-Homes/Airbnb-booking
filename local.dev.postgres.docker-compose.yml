@@ -1,4 +1,5 @@
-# Use postgres/example user/password credentials
+# POSTGRES development
+
 version: '3'
 
 services:

@@ -14,7 +14,7 @@ services:
   booking:
     build: 
       context: .
-      dockerfile: Dockerfile.prod
+      dockerfile: /dockerfiles/Dockerfile.prod
     restart: always
     ports:
       - 5555:5555

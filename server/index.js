@@ -3,13 +3,14 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const db = require('../db/index.js');
-
+require('dotenv').config();
 
 const app = express();
-const port = 3333;
+const PORT = process.env.BOOKING_PORT;
 app.use(express.static(path.join(__dirname, '../public/dist')));
 app.use(bodyParser.json());
 app.use(cors());
+
 
 // app.get('*.js', (req, res, next) => {
 //   req.url = `${req.url}.gz`;
@@ -70,6 +71,6 @@ app.post('/booking', (req, res) => {
     });
 });
 
-app.listen(port, () => {
-  console.log(`Listening port: ${port}`);
+app.listen(PORT, () => {
+  console.log(`Listening port: ${PORT}`);
 });

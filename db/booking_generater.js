@@ -92,7 +92,6 @@ function generateRandomBookings(num, roomList) {
   let book;
   for (let i = 0; i < num; i += 1) {
     book = generateRandomBooking(roomList);
-    // console.log(book);
     if (book !== null) {
       bookings.push(book);
       if (bookingsByRoom[`${book.roomId}`] === undefined) {

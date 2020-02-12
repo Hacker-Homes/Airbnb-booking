@@ -10,7 +10,7 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      roomId: 1,
+      roomId: 3,
       roomInfo: {
         roomname: '',
         price: 0,

@@ -6,6 +6,6 @@ COPY . /src/app
 
 RUN npm install
 RUN npm run build
-RUN npm run 
+RUN npm run start
 
 EXPOSE 5555

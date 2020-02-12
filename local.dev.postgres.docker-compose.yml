@@ -8,7 +8,7 @@ services:
     environment:
       POSTGRES_PASSWORD: docker
     volumes:
-      - ./postgres_data:/var/lib/postgresql/data
+      - ./volumes/postgres_data_volume:/var/lib/postgresql/data
 
   booking:
     build: 

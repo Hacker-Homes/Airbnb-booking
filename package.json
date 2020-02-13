@@ -35,6 +35,7 @@
   "homepage": "https://github.com/hacker-home/Airbnb-booking#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "cassandra-driver": "^4.4.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "enzyme": "^3.9.0",

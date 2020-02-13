@@ -5,7 +5,8 @@ WORKDIR /src/app
 COPY . /src/app
 
 RUN npm install
-RUN npm run react-dev
-RUN npm run start-dev
+RUN npm run build
 
 EXPOSE 5555
+
+CMD ["npm", "run", "start-dev"]

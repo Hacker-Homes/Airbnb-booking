@@ -3,18 +3,22 @@
 version: '3'
 
 services:
-  database:
+  cassandra_database:
     image: cassandra
     restart: always
     environment:
 
     volumes:
-      - ./volumes/cassandra_data_volume:/var/lib/postgresql/data
+      - ~/src/app/cassandra_volume:something
 
   booking:
     build: 
       context: .
-      dockerfile: /dockerfiles/Dockerfile.prod
+      dockerfile: ./dockerfiles/Dockerfile.prod
     restart: always
+    depends_on: 
+      - cassandra_database
     ports:
       - 5555:5555
+    volumes:
+      - ./db:/src/app/db

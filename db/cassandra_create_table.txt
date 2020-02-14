@@ -1,15 +1,3 @@
-CREATE TABLE if not exists rooms (
-	roomId int PRIMARY KEY,
-  roomName text NOT NULL,
-	price decimal NOT NULL,
-	cleaning_fee decimal NOT NULL,
-	service_fee decimal NOT NULL,
-  tax decimal NOT NULL,
-  max_guests_adults int NOT NULL,
-  max_guests_children int NOT NULL,
-  max_guests_infants int NOT NULL,
-  min_night int NOT NULL,
-  max_night int NOT NULL,
-  ratings decimal NOT NULL,
-  num_reviews int NOT NULL
-)
+CREATE TABLE if not exists rooms ( roomId int PRIMARY KEY, roomName text, price decimal, cleaning_fee decimal, service_fee decimal, tax decimal, max_guests_adults int, max_guests_children int, max_guests_infants int, min_night int, max_night int, ratings decimal, num_reviews int);
+
+COPY bookings_db.rooms (roomId, roomName, price, cleaning_fee, service_fee, tax, max_guests_adults, max_guests_children, max_guests_infants, min_night, max_night, ratings, num_reviews) FROM './src/app/stcCassandraRoomData.csv' WITH DELIMITER=',' AND HEADER=FALSE;

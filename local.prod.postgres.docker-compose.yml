@@ -1,0 +1,22 @@
+# POSTGRES production
+
+version: '3'
+
+services:
+  postgres_database:
+    image: postgres
+    restart: always
+    volumes:
+      - ~/src/app/postgres_volume:/var/lib/postgresql/data
+
+  booking:
+    build: 
+      context: .
+      dockerfile: ./dockerfiles/Dockerfile.prod
+    restart: always
+    depends_on: 
+      - postgres_database
+    ports:
+      - 5555:5555
+    volumes:
+      - .:/src/app

@@ -1,0 +1,22 @@
+# CASSANDRA production
+
+version: '3'
+
+services:
+  cassandra_database:
+    image: cassandra
+    restart: always
+    volumes:
+      - ~/src/app/cassandra_volume:something
+
+  booking:
+    build: 
+      context: .
+      dockerfile: ./dockerfiles/Dockerfile.prod
+    restart: always
+    depends_on: 
+      - cassandra_database
+    ports:
+      - 5555:5555
+    volumes:
+      - .:/src/app

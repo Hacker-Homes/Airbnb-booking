@@ -1,0 +1,26 @@
+# POSTGRES development
+
+version: '3'
+
+services:
+  postgres_database:
+    build:
+      context: .
+      dockerfile: ./dockerfiles/Dockerfile.postgres.dev
+    container_name: postgres_database_container
+    restart: always
+    volumes:
+      - ~/src/app/postgres_volume:/var/lib/postgresql/data
+      - ./db:/src/app/db
+
+  booking:
+    build: 
+      context: .
+      dockerfile: ./dockerfiles/Dockerfile.dev
+    restart: always
+    depends_on: 
+      - postgres_database
+    volumes:
+      - .:/src/app
+    ports:
+      - 5555:5555

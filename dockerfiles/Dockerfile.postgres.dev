@@ -1,0 +1,5 @@
+FROM postgres:12
+
+WORKDIR /src/app
+
+COPY ./db /src/app/db

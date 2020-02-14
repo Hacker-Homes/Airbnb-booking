@@ -4,16 +4,14 @@ version: '3'
 
 services:
   postgres_database:
-    image: postgres
+    build:
+      context: .
+      dockerfile: ./dockerfiles/Dockerfile.postgres.dev
+    container_name: postgres_database_container
     restart: always
-    environment:
-      POSTGRES_PASSWORD: docker
-      POSTGRES_USER: jake
-      POSTGRES_DB: hackerHomes
     volumes:
       - ~/src/app/postgres_volume:/var/lib/postgresql/data
-    ports:
-      - 5432:5432
+      - ./db:/src/app/db
 
   booking:
     build: 
@@ -23,6 +21,6 @@ services:
     depends_on: 
       - postgres_database
     volumes:
-      - ./db:/src/app/db
+      - .:/src/app
     ports:
       - 5555:5555

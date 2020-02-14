@@ -6,14 +6,8 @@ services:
   postgres_database:
     image: postgres
     restart: always
-    environment:
-      POSTGRES_PASSWORD: docker
-      POSTGRES_USER: jake
-      POSTGRES_DB: hackerHomes
     volumes:
       - ~/src/app/postgres_volume:/var/lib/postgresql/data
-    ports:
-      - 5432:5432
 
   booking:
     build: 
@@ -25,4 +19,4 @@ services:
     ports:
       - 5555:5555
     volumes:
-      - ./db:/src/app/db
+      - .:/src/app

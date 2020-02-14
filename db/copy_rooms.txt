@@ -1,0 +1,1 @@
+COPY rooms (roomName, price, cleaning_fee, service_fee, tax, max_guests_adults, max_guests_children, max_guests_infants, min_night, max_night, ratings, num_reviews) FROM '/src/app/db/stcRoomData.csv' WITH csv;

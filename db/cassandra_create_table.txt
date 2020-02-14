@@ -1,0 +1,15 @@
+CREATE TABLE if not exists rooms (
+	roomId int PRIMARY KEY,
+  roomName text NOT NULL,
+	price decimal NOT NULL,
+	cleaning_fee decimal NOT NULL,
+	service_fee decimal NOT NULL,
+  tax decimal NOT NULL,
+  max_guests_adults int NOT NULL,
+  max_guests_children int NOT NULL,
+  max_guests_infants int NOT NULL,
+  min_night int NOT NULL,
+  max_night int NOT NULL,
+  ratings decimal NOT NULL,
+  num_reviews int NOT NULL
+)

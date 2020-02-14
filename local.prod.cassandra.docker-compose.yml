@@ -6,8 +6,6 @@ services:
   cassandra_database:
     image: cassandra
     restart: always
-    environment:
-
     volumes:
       - ~/src/app/cassandra_volume:something
 
@@ -21,4 +19,4 @@ services:
     ports:
       - 5555:5555
     volumes:
-      - ./db:/src/app/db
+      - .:/src/app

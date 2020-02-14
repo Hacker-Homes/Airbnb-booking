@@ -4,7 +4,7 @@ const faker = require('faker');
 
 const ENCODING = ''; // 'base64' || ''
 const WRITE_MODE = 'a'; // 'w' || 'a' (write, append)
-const OUTPUT_FILE = path.resolve(__dirname, 'stcRoomData.csv');
+const OUTPUT_FILE = path.resolve(__dirname, 'stcPostgresRoomData.csv');
 const SEED_COUNT = 1000000;
 
 const writeStream = fs.createWriteStream(OUTPUT_FILE, { encoding: ENCODING, flags: WRITE_MODE });

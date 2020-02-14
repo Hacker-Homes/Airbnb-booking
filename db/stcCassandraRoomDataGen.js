@@ -1,10 +1,15 @@
+/*
+THIS GENERATOR is exactly the same as `stcPostgresRoomDataGen.js` except that it generates an
+auto-incrementing primary key integer as well
+*/
+
 const fs = require('fs');
 const path = require('path');
 const faker = require('faker');
 
 const ENCODING = ''; // 'base64' || ''
 const WRITE_MODE = 'a'; // 'w' || 'a' (write, append)
-const OUTPUT_FILE = path.resolve(__dirname, 'stcRoomData.csv');
+const OUTPUT_FILE = path.resolve(__dirname, 'stcCassandraRoomData.csv');
 const SEED_COUNT = 1000000;
 
 const writeStream = fs.createWriteStream(OUTPUT_FILE, { encoding: ENCODING, flags: WRITE_MODE });
@@ -18,6 +23,7 @@ const roomNameAppendix = ["'s Apartment", "'s House", "'s Loft", "'s Condo"];
 for (let i = 0; i < SEED_COUNT; i += 1) {
   const price = randomIntFromInterval(50, 200);
   const room = [
+    i,
     `${faker.name.findName()}${
       roomNameAppendix[randomIntFromInterval(0, roomNameAppendix.length - 1)]
     }`, // roomname

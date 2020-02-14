@@ -22,6 +22,9 @@ services:
       # CASSANDRA_ENABLE_RPC: true # Enable the thrift RPC endpoint. Default :true
       CASSANDRA_DATACENTER: dc1 # Datacenter name for the cluster. Ignored in SimpleSnitch endpoint snitch. Default: dc1.
       CASSANDRA_RACK: rack1 # Rack name for the cluster. Ignored in SimpleSnitch endpoint snitch. Default: rack1.
+    volumes:
+      - ~/src/app/cassandra_volume:/var/lib/cassandra
+      - ./db:/src/app/db
 
   booking:
     build: 

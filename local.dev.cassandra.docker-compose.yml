@@ -4,36 +4,20 @@ version: '3'
 
 services:
   cassandra_database:
-    image: bitnami/cassandra:3.11.5-ol-7-r104
-    
+    image: datastax/dse-server:5.1.11
     restart: always
-    environment:
-      CASSANDRA_TRANSPORT_PORT_NUMBER: 7000 # Inter-node cluster communication port. Default: 7000
-      CASSANDRA_JMX_PORT_NUMBER: 7199 # JMX connections port. Default: 7199
-      CASSANDRA_CQL_PORT_NUMBER: 9042 # Client port. Default: 9042.
-      CASSANDRA_USER: jake # Cassandra user name. Defaults: cassandra
-      # CASSANDRA_PASSWORD_SEEDER: true # Password seeder will change the Cassandra default credentials at initialization. In clusters, only one node should be marked as password seeder. Default: no
-      CASSANDRA_PASSWORD: docker # Cassandra user password. Default: cassandra
-      CASSANDRA_NUM_TOKENS: 256 # Number of tokens for the node. Default: 256.
-      # CASSANDRA_HOST: # Hostname used to configure Cassandra. It can be either an IP or a domain. If left empty, it will be resolved to the machine IP.
-      CASSANDRA_CLUSTER_NAME: HackerHomesCluster # Hosts that will act as Cassandra seeds. No defaults.
-      CASSANDRA_SEEDS: # Hosts that will act as Cassandra seeds. No defaults.
-      CASSANDRA_ENDPOINT_SNITCH: SimpleSnitch # Snitch name (which determines which data centers and racks nodes belong to). Default SimpleSnitch
-      # CASSANDRA_ENABLE_RPC: true # Enable the thrift RPC endpoint. Default :true
-      CASSANDRA_DATACENTER: dc1 # Datacenter name for the cluster. Ignored in SimpleSnitch endpoint snitch. Default: dc1.
-      CASSANDRA_RACK: rack1 # Rack name for the cluster. Ignored in SimpleSnitch endpoint snitch. Default: rack1.
     volumes:
       - ~/src/app/cassandra_volume:/var/lib/cassandra
       - ./db:/src/app/db
 
-  booking:
-    build: 
-      context: .
-      dockerfile: ./dockerfiles/Dockerfile.dev
-    restart: always
-    depends_on: 
-      - cassandra_database
-    ports:
-      - 5555:5555
-    volumes:
-      - .:/src/app
+  # booking:
+  #   build: 
+  #     context: .
+  #     dockerfile: ./dockerfiles/Dockerfile.dev
+  #   restart: always
+  #   depends_on: 
+  #     - cassandra_database
+  #   ports:
+  #     - 5555:5555
+  #   volumes:
+  #     - .:/src/app

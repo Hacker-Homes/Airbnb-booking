@@ -7,3 +7,4 @@ coverage/lcov-report/index.html
 coverage
 *.csv
 /volumes
+/db/postgreSQL/*

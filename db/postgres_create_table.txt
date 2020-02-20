@@ -13,3 +13,19 @@ CREATE TABLE rooms (
   ratings NUMERIC(2,1) NOT NULL,
   num_reviews INT NOT NULL
 )
+
+CREATE TABLE rooms (
+	roomId SERIAL primary key,
+  roomName VARCHAR(64) NOT NULL,
+	price NUMERIC(8, 2) NOT NULL,
+	cleaning_fee NUMERIC(8, 2) NOT NULL,
+	service_fee NUMERIC(8, 2) NOT NULL,
+  tax NUMERIC(8, 2) NOT NULL,
+  max_guests_adults INT NOT NULL,
+  max_guests_children INT NOT NULL,
+  max_guests_infants INT NOT NULL,
+  min_night INT NOT NULL,
+  max_night INT NOT NULL,
+  ratings NUMERIC(2,1) NOT NULL,
+  num_reviews INT NOT NULL
+)

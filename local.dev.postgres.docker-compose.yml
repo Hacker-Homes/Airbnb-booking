@@ -9,8 +9,12 @@ services:
       dockerfile: ./dockerfiles/Dockerfile.postgres.dev
     container_name: postgres_database_container
     restart: always
+    environment:
+      POSTGRES_PASSWORD: docker
+      POSTGRES_USER: docker
+
     volumes:
-      - ~/src/app/postgres_volume:/var/lib/postgresql/data
+      - ./db/postgreSQL:/var/lib/postgresql/data
       - ./db:/src/app/db
 
   booking:

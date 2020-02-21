@@ -95,7 +95,8 @@ export default class App extends React.Component {
 
   initialize() {
     this.getRoomData();
-    this.getBookingData();
+    // TURN OFF BOOKING DATA FETCH
+    // this.getBookingData();
   }
 
   handleRendering() {

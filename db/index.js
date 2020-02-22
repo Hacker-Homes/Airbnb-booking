@@ -1,49 +1,67 @@
-const Sequelize = require('sequelize');
+const { Pool } = require('pg');
 
-const sequelize = new Sequelize('booking', 'root', null, {
-  host: 'database',
-  dialect: 'mysql',
+const pool = new Pool({
+  user: 'docker',
+  database: 'booking_db',
+  password: 'docker',
+  port: 5432,
+  host: 'postgres_database_container',
+});
+
+pool.on('error', (err) => {
+  /* eslint-disable no-alert, no-console */
+  console.log('PG pool error', err);
+  process.exit(-1);
 });
 
 
-const Room = sequelize.define('rooms', {
-  id: { type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true },
-  roomname: Sequelize.STRING,
-  price: Sequelize.INTEGER,
-  cleaning_fee: Sequelize.INTEGER,
-  service_fee: Sequelize.INTEGER,
-  tax: Sequelize.INTEGER,
-  max_guest: Sequelize.STRING,
-  min_night: Sequelize.INTEGER,
-  max_night: Sequelize.INTEGER,
-  ratings: Sequelize.DECIMAL(2, 1),
-  num_reviews: Sequelize.INTEGER,
-});
+module.exports = pool;
 
-const Booking = sequelize.define('bookings', {
-  email: Sequelize.STRING,
-  guests: Sequelize.STRING,
-  check_in: Sequelize.DATE,
-  check_out: Sequelize.DATE,
-  createdAt: Sequelize.DATE,
-  roomId: {
-    type: Sequelize.INTEGER,
-    references: {
-      model: 'rooms',
-      key: 'id',
-    },
-  },
-});
+// const Sequelize = require('sequelize');
 
-Room.hasMany(Booking, { foreignKey: 'roomId' });
-Booking.belongsTo(Room, { foreignKey: 'roomId' });
+// const sequelize = new Sequelize('booking', 'root', null, {
+//   host: 'database',
+//   dialect: 'mysql',
+// });
 
-sequelize.authenticate();
+// const Room = sequelize.define('rooms', {
+//   id: { type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true },
+//   roomname: Sequelize.STRING,
+//   price: Sequelize.INTEGER,
+//   cleaning_fee: Sequelize.INTEGER,
+//   service_fee: Sequelize.INTEGER,
+//   tax: Sequelize.INTEGER,
+//   max_guest: Sequelize.STRING,
+//   min_night: Sequelize.INTEGER,
+//   max_night: Sequelize.INTEGER,
+//   ratings: Sequelize.DECIMAL(2, 1),
+//   num_reviews: Sequelize.INTEGER,
+// });
 
-Room.sync();
-Booking.sync();
+// const Booking = sequelize.define('bookings', {
+//   email: Sequelize.STRING,
+//   guests: Sequelize.STRING,
+//   check_in: Sequelize.DATE,
+//   check_out: Sequelize.DATE,
+//   createdAt: Sequelize.DATE,
+//   roomId: {
+//     type: Sequelize.INTEGER,
+//     references: {
+//       model: 'rooms',
+//       key: 'id',
+//     },
+//   },
+// });
 
-module.exports = {
-  Room,
-  Booking,
-};
+// Room.hasMany(Booking, { foreignKey: 'roomId' });
+// Booking.belongsTo(Room, { foreignKey: 'roomId' });
+
+// sequelize.authenticate();
+
+// Room.sync();
+// Booking.sync();
+
+// module.exports = {
+//   Room,
+//   Booking,
+// };

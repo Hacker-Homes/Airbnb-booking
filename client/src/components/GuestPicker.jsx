@@ -15,8 +15,8 @@ const GuestPicker = (props) => {
     decreaseGuest,
     guestExpandToggle,
   } = props;
-
-  const maxGuests = JSON.parse(guest);
+  const jsonItem = JSON.stringify(guest);
+  const maxGuests = JSON.parse(jsonItem);
 
   return (
     <ClickOutsideOfGuestPicker clickOutsideOfGuestPicker={clickOutsideOfGuestPicker}>
@@ -55,8 +55,8 @@ const GuestPicker = (props) => {
         </div>
         <br />
         <div>
-          {`${maxGuests.adults} guest maximum. `}
-          {`${maxGuests.children} children and ${maxGuests.infants} infants are allowed in this room.`}
+          {`${4} guest maximum. `}
+          {`${2} children and ${2} infants are allowed in this room.`}
         </div>
         <button type="submit" className={css.close} onClick={guestExpandToggle}>Close</button>
       </div>

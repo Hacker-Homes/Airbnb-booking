@@ -156,9 +156,9 @@ export default class Form extends React.Component {
       price, serviceFee, cleaningFee, tax,
     } = this.props;
     const { selectedNights } = this.state;
-    let cost = price + serviceFee + cleaningFee;
-    let totalTax = cost * (tax / 100);
-    totalTax = parseFloat(tax.toFixed(2));
+    let cost = +price + +serviceFee + +cleaningFee;
+    const totalTax = cost * (tax / 100).toFixed(2);
+    // totalTax = parseFloat(tax.toFixed(2));
     cost += totalTax;
     cost = parseFloat(cost.toFixed(2));
     const totalCost = cost * selectedNights;

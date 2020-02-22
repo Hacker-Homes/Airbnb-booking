@@ -154,7 +154,7 @@ export default class BookingSummary extends React.Component {
                 <tr />
                 <tr>
                   <td style={{ fontWeight: '600', fontSize: '15px' }}>Total (USD)</td>
-                  <td className={css.prices} style={{ fontWeight: '600' }}>{`$ ${totalCost}`}</td>
+                  <td className={css.prices} style={{ fontWeight: '600' }}>{`$ ${totalCost.toFixed(2)}`}</td>
                 </tr>
               </tbody>
             </table>

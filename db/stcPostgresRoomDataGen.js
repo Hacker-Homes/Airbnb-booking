@@ -4,10 +4,13 @@ const faker = require('faker');
 
 const ENCODING = ''; // 'base64' || ''
 const WRITE_MODE = 'a'; // 'w' || 'a' (write, append)
-const OUTPUT_FILE = path.resolve(__dirname, 'stcPostgresRoomData.csv');
-const SEED_COUNT = 1000000;
+const OUTPUT_FILE = path.resolve(__dirname, 'stcPostgresRoomData2.csv');
+const SEED_COUNT = 500000;
 
-const writeStream = fs.createWriteStream(OUTPUT_FILE, { encoding: ENCODING, flags: WRITE_MODE });
+const writeStream = fs.createWriteStream(OUTPUT_FILE, {
+  encoding: ENCODING,
+  flags: WRITE_MODE,
+});
 
 function randomIntFromInterval(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
@@ -17,6 +20,11 @@ const roomNameAppendix = ["'s Apartment", "'s House", "'s Loft", "'s Condo"];
 
 for (let i = 0; i < SEED_COUNT; i += 1) {
   const price = randomIntFromInterval(50, 200);
+  const maxGuests = JSON.stringify({
+    adults: randomIntFromInterval(1, 6),
+    children: randomIntFromInterval(0, 4),
+    infants: randomIntFromInterval(0, 2),
+  });
   const room = [
     `${faker.name.findName()}${
       roomNameAppendix[randomIntFromInterval(0, roomNameAppendix.length - 1)]
@@ -25,15 +33,13 @@ for (let i = 0; i < SEED_COUNT; i += 1) {
     5, // cleaning_fee
     5, // service_fee
     Math.round(price * 0.085 * 100) / 100, // tax
-    randomIntFromInterval(1, 6), // max_guest_adults
-    randomIntFromInterval(0, 4), // max_guest_children
-    randomIntFromInterval(0, 2), // max_guest_infants
+    maxGuests, // max_guest
     randomIntFromInterval(1, 2), // min_night
     randomIntFromInterval(3, 6), // max_night
     (Math.random() * (5.0 - 1.0) + 1.0).toFixed(1), // ratings
     randomIntFromInterval(0, 100), // num_reviews
   ];
-  const roomString = room.join(',');
+  const roomString = room.join('|');
 
   writeStream.write(`${roomString}\n`);
 }

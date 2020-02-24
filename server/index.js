@@ -8,7 +8,7 @@ const pool = require('../db/index.js');
 require('dotenv').config();
 
 const app = express();
-const PORT = 555;
+const PORT = 5555;
 app.use(express.static(path.join(__dirname, '../public/dist')));
 app.use(bodyParser.json());
 app.use(cors());

@@ -1,2 +1,4 @@
 node_modules/*
 *bundle.js
+/k6.config.js
+/newrelic_agent.log

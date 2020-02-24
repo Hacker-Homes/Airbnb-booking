@@ -43,7 +43,7 @@ export default class App extends React.Component {
     const link = window.location.href.match(/id\s*=\s*(.*)/);
     if (link) {
       $.ajax({
-        url: `http://localhost:5555/room?id=${link[1]}`,
+        url: `/room?id=${link[1]}`,
         type: 'GET',
         error: (err) => {
           /* eslint-disable no-alert, no-console */
@@ -55,7 +55,7 @@ export default class App extends React.Component {
       });
     } else {
       $.ajax({
-        url: 'http://localhost:5555/room?id=1',
+        url: '/room?id=1',
         type: 'GET',
         error: (err) => {
           /* eslint-disable no-alert, no-console */
@@ -73,7 +73,7 @@ export default class App extends React.Component {
     const link = window.location.href.match(/id\s*=\s*(.*)/);
     if (link) {
       $.ajax({
-        url: `http://localhost:5555/booking?id=${link[1]}`,
+        url: `/booking?id=${link[1]}`,
         type: 'GET',
         error: (err) => {
           /* eslint-disable no-alert, no-console */
@@ -85,7 +85,7 @@ export default class App extends React.Component {
       });
     } else {
       $.ajax({
-        url: 'http://localhost:5555/booking?id=1',
+        url: '/booking?id=1',
         type: 'GET',
         error: (err) => {
           /* eslint-disable no-alert, no-console */

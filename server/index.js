@@ -1,10 +1,10 @@
+require('newrelic');
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const pool = require('../db/index.js');
 
-require('../newrelic');
 require('dotenv').config();
 
 const app = express();

@@ -13,8 +13,6 @@ app.use(express.static(path.join(__dirname, '../public/dist')));
 app.use(bodyParser.json());
 app.use(cors());
 
-/* eslint-disable no-alert, no-console */
-console.log('component server hit');
 
 // app.get('*.js', (req, res, next) => {
 //   req.url = `${req.url}.gz`;
@@ -23,6 +21,8 @@ console.log('component server hit');
 // });
 
 app.get('/room', (req, res) => {
+  /* eslint-disable no-alert, no-console */
+  console.log('component server hit');
   pool.query('SELECT * FROM rooms WHERE roomId=$1', [req.query.id])
     .then(response => res.send(response.rows[0]))
     .catch((e) => {

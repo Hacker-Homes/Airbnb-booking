@@ -1,11 +1,21 @@
+
+require('dotenv').config();
 const { Pool } = require('pg');
 
+const {
+  POSTGRES_USER,
+  POSTGRES_DB,
+  POSTGRES_PASS,
+  POSTGRES_PORT,
+  POSTGRES_HOST,
+} = process.env;
+
 const pool = new Pool({
-  user: 'booking_admin',
-  database: 'booking_db',
-  password: 'booking_password-1101',
-  port: 5432,
-  host: '52.34.169.211',
+  user: POSTGRES_USER,
+  database: POSTGRES_DB,
+  password: POSTGRES_PASS,
+  port: POSTGRES_PORT,
+  host: POSTGRES_HOST,
 });
 
 pool.on('error', (err) => {

@@ -13,7 +13,6 @@ app.use(express.static(path.join(__dirname, '../public/dist')));
 app.use(bodyParser.json());
 app.use(cors());
 
-
 // app.get('*.js', (req, res, next) => {
 //   req.url = `${req.url}.gz`;
 //   res.set('Content-Encoding', 'gzip');
@@ -22,26 +21,17 @@ app.use(cors());
 
 app.get('/room', (req, res) => {
   /* eslint-disable no-alert, no-console */
-  console.log('component server hit');
-  pool.query('SELECT * FROM rooms WHERE roomId=$1', [req.query.id])
-    .then(response => res.send(response.rows[0]))
+  pool
+    .query('SELECT * FROM rooms WHERE roomId=$1', [req.query.id])
+    .then((response) => {
+      console.log('component server hit: RESPONSE:', response);
+      res.send(response.rows[0]);
+    })
     .catch((e) => {
       /* eslint-disable no-alert, no-console */
       console.log(e.stack);
       res.sendStatus(500);
     });
-  // db.Room.findAll({
-  //   where: {
-  //     id: req.query.id,
-  //   },
-  // })
-  //   .then((result) => {
-  //     res.send(result[0].dataValues);
-  //   })
-  //   .catch(() => {
-  //     res.sendStatus(500);
-  //   });
-  // }
 });
 
 // app.get('/booking', (req, res) => {
@@ -58,7 +48,6 @@ app.get('/room', (req, res) => {
 //     });
 // });
 
-
 // making booking
 
 // app.post('/booking', (req, res) => {
@@ -70,7 +59,6 @@ app.get('/room', (req, res) => {
 //     check_out: new Date(req.body.check_out),
 //     createdAt: new Date(req.body.createdAt),
 //   };
-
 
 //   db.Booking.create(data)
 //     .catch((err) => {

@@ -59,7 +59,6 @@ export default class App extends React.Component {
         type: 'GET',
         error: (err) => {
           /* eslint-disable no-alert, no-console */
-          console.log(link);
           console.log(err);
         },
         success: (result) => {

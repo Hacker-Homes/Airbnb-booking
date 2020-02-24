@@ -22,11 +22,7 @@ app.use(cors());
 
 app.get('/room', (req, res) => {
   pool.query('SELECT * FROM rooms WHERE roomId=$1', [req.query.id])
-    .then((response) => {
-      /* eslint-disable no-alert, no-console */
-      console.log('response.rows[0]=======================', response.rows[0]);
-      return res.send(response.rows[0]);
-    })
+    .then(response => res.send(response.rows[0]))
     .catch((e) => {
       /* eslint-disable no-alert, no-console */
       console.log(e.stack);

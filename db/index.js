@@ -24,6 +24,8 @@ pool.on('error', (err) => {
   process.exit(-1);
 });
 
+/* eslint-disable no-alert, no-console */
+console.log(pool);
 
 module.exports = pool;
 

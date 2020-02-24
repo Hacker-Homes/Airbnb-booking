@@ -1,11 +1,11 @@
 const { Pool } = require('pg');
 
 const pool = new Pool({
-  user: 'docker',
+  user: 'booking_admin',
   database: 'booking_db',
-  password: 'docker',
+  password: 'booking_password-1101',
   port: 5432,
-  host: 'postgres_database_container',
+  host: '52.34.169.211',
 });
 
 pool.on('error', (err) => {

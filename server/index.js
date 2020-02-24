@@ -25,7 +25,7 @@ app.get('/room', (req, res) => {
     .query('SELECT * FROM rooms WHERE roomId=$1', [req.query.id])
     .then((response) => {
       console.log('component server hit: RESPONSE:', response);
-      console.log(req.url);
+      console.log('req.url:', req.url, 'req.query.id:', req.query.id);
       res.send(response.rows[0]);
     })
     .catch((e) => {

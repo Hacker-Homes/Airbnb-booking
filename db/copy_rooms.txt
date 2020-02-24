@@ -1,1 +1,6 @@
 COPY rooms (roomName, price, cleaning_fee, service_fee, tax, max_guest, min_night, max_night, ratings, num_reviews) FROM '/src/app/db/stcPostgresRoomData2.csv' WITH csv DELIMITER '|';
+
+
+SCP command:
+generic: scp ./path/to/file ssh_host:~/
+scp ./db/stcPostgresRoomData2.csv booking_aws_host:~/

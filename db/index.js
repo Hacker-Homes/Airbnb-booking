@@ -25,7 +25,7 @@ pool.on('error', (err) => {
 });
 
 /* eslint-disable no-alert, no-console */
-console.log(pool);
+console.log(pool.query('SELECT * FROM rooms LIMIT 1;').then(res => console.log(res)));
 
 module.exports = pool;
 

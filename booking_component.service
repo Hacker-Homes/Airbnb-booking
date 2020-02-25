@@ -1,0 +1,17 @@
+[Unit]
+Description=start node server - start node server on startup, restart on failure
+After=network.target
+
+[Service]
+Environment=NODE_ENV=production PORT=5555
+Type=simple
+ExecStart=ExecStart=/home/ubuntu/.nvm/versions/node/v10.15.3/bin/node /home/ubuntu/Airbnb-booking/server/index.js
+Restart=on-failure
+RestartSec=10
+
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=nodejs-example
+
+[Install]
+WantedBy=multi-user.target

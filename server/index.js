@@ -2,7 +2,7 @@ require('newrelic');
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
-const morgan = require('morgan');
+// const morgan = require('morgan');
 const cors = require('cors');
 const pool = require('../db/index.js');
 
@@ -13,7 +13,7 @@ const PORT = 5555;
 app.use(express.static(path.join(__dirname, '../public/dist')));
 app.use(bodyParser.json());
 app.use(cors());
-app.use(morgan('dev'));
+// app.use(morgan('dev'));
 
 // app.get('*.js', (req, res, next) => {
 //   req.url = `${req.url}.gz`;

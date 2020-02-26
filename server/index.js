@@ -6,7 +6,6 @@ const morgan = require('morgan');
 const cors = require('cors');
 const pool = require('../db/index.js');
 
-
 require('dotenv').config();
 
 const app = express();
@@ -23,19 +22,21 @@ app.use(morgan('dev'));
 // });
 
 app.get('/room', (req, res) => {
-  /* eslint-disable no-alert, no-console */
-  pool
-    .query('SELECT * FROM rooms WHERE roomId=$1', [req.query.id])
-    .then((response) => {
-      // console.log('component server hit: RESPONSE:', response);
-      // console.log('req.url:', req.url, 'req.query.id:', req.query.id);
-      res.send(response.rows[0]);
-    })
-    .catch((e) => {
-      /* eslint-disable no-alert, no-console */
-      console.log(e.stack);
-      res.sendStatus(500);
-    });
+  /* eslint-disable no-alert, arrow-body-style */
+  pool.connect().then((client) => {
+    return client
+      .query('SELECT * FROM rooms WHERE roomId=$1', [req.query.id])
+      .then((response) => {
+        // console.log('component server hit: RESPONSE:', response);
+        // console.log('req.url:', req.url, 'req.query.id:', req.query.id);
+        res.send(response.rows[0]);
+      })
+      .catch((e) => {
+        /* eslint-disable no-alert, no-console */
+        console.log(e.stack);
+        res.sendStatus(500);
+      });
+  });
 });
 
 // app.get('/booking', (req, res) => {

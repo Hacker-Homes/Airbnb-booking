@@ -10,3 +10,4 @@ coverage
 /volumes
 /db/postgreSQL/*
 /.env
+newrelic_agent.log

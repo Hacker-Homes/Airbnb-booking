@@ -1,6 +1,26 @@
+CREATE TABLE rooms (
+	roomId SERIAL primary key,
+  roomName VARCHAR(64) NOT NULL,
+	price NUMERIC(8, 2) NOT NULL,
+	cleaning_fee NUMERIC(8, 2) NOT NULL,
+	service_fee NUMERIC(8, 2) NOT NULL,
+  tax NUMERIC(8, 2) NOT NULL,
+  max_guest VARCHAR(256) NOT NULL,
+  min_night INT NOT NULL,
+  max_night INT NOT NULL,
+  ratings NUMERIC(2,1) NOT NULL,
+  num_reviews INT NOT NULL
+);
+
+
 COPY rooms (roomName, price, cleaning_fee, service_fee, tax, max_guest, min_night, max_night, ratings, num_reviews) FROM '/src/app/db/stcPostgresRoomData2.csv' WITH csv DELIMITER '|';
 
 
 SCP command:
 generic: scp ./path/to/file ssh_host:~/
 scp ./db/stcPostgresRoomData2.csv booking_aws_host:~/
+
+
+COPY rooms (roomName, price, cleaning_fee, service_fee, tax, max_guest, min_night, max_night, ratings, num_reviews) FROM '/home/ubuntu/stcPostgresRoomData2.csv' WITH csv DELIMITER '|';
+
+psql -h 52.34.169.211 -p 5432 -d booking_db -U booking_admin -W;

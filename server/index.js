@@ -27,12 +27,14 @@ app.get('/room', (req, res) => {
     return client
       .query('SELECT * FROM rooms WHERE roomId=$1', [req.query.id])
       .then((response) => {
+        client.release();
         // console.log('component server hit: RESPONSE:', response);
         // console.log('req.url:', req.url, 'req.query.id:', req.query.id);
         res.send(response.rows[0]);
       })
       .catch((e) => {
         /* eslint-disable no-alert, no-console */
+        client.release();
         console.log(e.stack);
         res.sendStatus(500);
       });

@@ -16,9 +16,9 @@ const pool = new Pool({
   password: POSTGRES_PASS,
   port: POSTGRES_PORT,
   host: POSTGRES_HOST,
-  max: 200,
-  idleTimeoutMillis: 10000,
-  connectionTimeoutMillis: 4000,
+  max: 1000,
+  idleTimeoutMillis: 30000,
+  connectionTimeoutMillis: 3000,
 });
 
 pool.on('error', (err) => {

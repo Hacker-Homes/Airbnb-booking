@@ -18,7 +18,7 @@ const pool = new Pool({
   host: POSTGRES_HOST,
   max: 1000,
   idleTimeoutMillis: 30000,
-  connectionTimeoutMillis: 3000,
+  connectionTimeoutMillis: 4000,
 });
 
 pool.on('error', (err) => {

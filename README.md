@@ -1,17 +1,14 @@
-# Airbnb-booking
+# Hacker Home booking component
 
-> Airbnb Booking module
+> Booking module
 
 ## Related Projects
 
-  - https://github.com/hacker-home/Airbnb-more-homes
-  - https://github.com/hacker-home/Airbnb-info
-  - https://github.com/hacker-home/Airbnb-reviews
-  - https://github.com/hacker-home/Airbnb-photos
+  - https://github.com/Hacker-Homes
 
 My proxy server is here!
 
-https://github.com/hacker-home/Airbnb-booking-proxy
+https://github.com/Hacker-Homes/Booking-proxy
 
 ## Usage
 
